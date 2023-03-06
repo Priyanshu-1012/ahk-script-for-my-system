@@ -5,6 +5,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ^Esc::WinClose, A
 
+!t::Run ms-settings:taskbar
+  
+
 ^!c::Run "C:\ChatGPT - Shortcut.lnk"
 ^!m::Run "C:\Mail - Shortcut.lnk"
 ^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
