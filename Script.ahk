@@ -6,6 +6,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ^Esc::WinClose, A
 
 !t::Run ms-settings:taskbar
+
+
+SetTitleMatchMode, 2
+
+#IfWinActive ahk_exe msedge.exe
+!Up::
+    Send ^{PgUp}
+return
+
+!Down::
+    Send ^{PgDn}
+return
+
   
 
 ^!c::Run "C:\ChatGPT - Shortcut.lnk"
@@ -35,16 +48,6 @@ return
 ^y::Run https://www.youtube.com
 return
 
-SetTitleMatchMode, 2
-
-#IfWinActive ahk_exe msedge.exe
-!Up::
-    Send ^{PgUp}
-return
-
-!Down::
-    Send ^{PgDn}
-return
 
 
 !+e::
@@ -56,4 +59,18 @@ return
 
 
 RAlt::LAlt
+
+
+
+
+SetTitleMatchMode, 2
+
+#IfWinActive ahk_exe msedge.exe
+RAlt & Up::
+    Send ^{PgUp}
+return
+
+RAlt & Down::
+    Send ^{PgDn}
+return
 
