@@ -26,17 +26,12 @@ return
 ^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
 
 
-^!f::Run "C:\Users\priya\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\f.lux.lnk"
-; Wait for 2 seconds
-Sleep, 2
-; Close the f.lux window
-WinClose, ahk_exe flux.exe
-return
+
 
 ^!b::Run "C:\Microsoft Edge - Shortcut.lnk"
 ^!s::Run "C:\Spotify - Shortcut.lnk"
 ^!l::Run "C:\Phone Link - Shortcut.lnk"
-^!w::Run "C:\WhatsApp.lnk"
+^!w::Run "C:\WhatsApp - Shortcut.lnk"
 ^!p::Run "C:\Prime Video for Windows - Shortcut.lnk"
 ^!r::Run "C:\OBS Studio (64bit) - Shortcut.lnk"
 ^!d::
