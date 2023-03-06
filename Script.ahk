@@ -1,0 +1,56 @@
+﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+^Esc::WinClose, A
+
+^!c::Run "C:\ChatGPT - Shortcut.lnk"
+^!m::Run "C:\Mail - Shortcut.lnk"
+^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
+
+
+^!f::Run "C:\Users\priya\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\f.lux.lnk"
+; Wait for 2 seconds
+Sleep, 2
+; Close the f.lux window
+WinClose, ahk_exe flux.exe
+return
+
+^!b::Run "C:\Microsoft Edge - Shortcut.lnk"
+^!s::Run "C:\Spotify - Shortcut.lnk"
+^!l::Run "C:\Phone Link - Shortcut.lnk"
+^!w::Run "C:\WhatsApp.lnk"
+^!p::Run "C:\Prime Video for Windows - Shortcut.lnk"
+^!r::Run "C:\OBS Studio (64bit) - Shortcut.lnk"
+^!d::
+  Run, explorer.exe "C:\Users\priya\Downloads"
+return
+
+
+#IfWinActive ahk_exe msedge.exe
+^y::Run https://www.youtube.com
+return
+
+SetTitleMatchMode, 2
+
+#IfWinActive ahk_exe msedge.exe
+!Up::
+    Send ^{PgUp}
+return
+
+!Down::
+    Send ^{PgDn}
+return
+
+
+!+e::
+Run, explorer.exe "C:\Users\priya\Documents\Electronics"
+return
+
+!+s::Shutdown, 1
+!+r::Shutdown, 2
+
+
+RAlt::LAlt
+
