@@ -25,6 +25,9 @@ return
 ^!m::Run "C:\Mail - Shortcut.lnk"
 ^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
 
+^!t::
+Run wt.exe
+Return
 
 
 
@@ -45,6 +48,13 @@ return
 
 
 
+RAlt & l::
+Click, 780, 1012   
+Return
+
+
+
+
 !+e::
 Run, explorer.exe "C:\Users\priya\Documents\Electronics"
 return
@@ -54,6 +64,7 @@ return
 
 
 RAlt::LAlt
+
 
 
 
