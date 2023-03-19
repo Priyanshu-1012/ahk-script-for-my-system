@@ -8,16 +8,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 !t::Run ms-settings:taskbar
 
 
-SetTitleMatchMode, 2
+RAlt & Left::
+    IfWinActive ahk_class CabinetWClass ; for Windows Explorer
+    {
+        Send {ALTDOWN}{Left}{ALTUP}
+    }
+    Else
+    {
+        Send {RAlt Down}{Left}{RAlt Up}
+    }
+    return
 
-#IfWinActive ahk_exe msedge.exe
-!Up::
-    Send ^{PgUp}
-return
 
-!Down::
-    Send ^{PgDn}
-return
+
 
   
 
@@ -38,18 +41,30 @@ Return
 ^!p::Run "C:\Prime Video for Windows - Shortcut.lnk"
 ^!r::Run "C:\OBS Studio (64bit) - Shortcut.lnk"
 ^!d::
-  Run, explorer.exe "C:\Users\priya\Downloads"
+Run explorer.exe shell:Downloads
 return
+
+
 
 
 #IfWinActive ahk_exe msedge.exe
 ^y::Run https://www.youtube.com
 return
 
+#IfWinActive ahk_exe msedge.exe
+!a::Run https://animesuge.to/anime/one-piece-ov8
+RAlt & i::Run https://www.linkedin.com/feed/
+!1::Run https://mail.google.com/mail/u/0/#inbox
+!2::Run https://mail.google.com/mail/u/2/#inbox
+!4::Run https://mail.google.com/mail/u/1/#inbox
+!g::Run https://github.com/Priyanshu-1012
+!d::Run https://drive.google.com/drive/u/2/my-drive
+return
+
 
 
 RAlt & l::
-Click, 780, 1012   
+Click, 869, 1025  
 Return
 
 
@@ -79,4 +94,20 @@ return
 RAlt & Down::
     Send ^{PgDn}
 return
+
+
+
+SetTitleMatchMode, 2
+
+#IfWinActive ahk_exe msedge.exe
+!Up::
+    Send ^{PgUp}
+return
+
+!Down::
+    Send ^{PgDn}
+return
+
+
+SetTitleMatchMode,2
 
