@@ -8,6 +8,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 !t::Run ms-settings:taskbar
 
 
+^!t::Click, 44, 553
+
+
 RAlt & Left::
     IfWinActive ahk_class CabinetWClass ; for Windows Explorer
     {
@@ -21,16 +24,23 @@ RAlt & Left::
 
 
 
+RAlt & Right::
+IfWinActive ahk_class CabinetWClass ; for Windows Explorer
+{
+Send {ALTDOWN}{Right}{ALTUP}
+}
+Else
+{
+Send {RAlt Down}{Right}{RAlt Up}
+}
+return
 
-  
+
 
 ^!c::Run "C:\ChatGPT - Shortcut.lnk"
 ^!m::Run "C:\Mail - Shortcut.lnk"
 ^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
 
-^!t::
-Run wt.exe
-Return
 
 
 
