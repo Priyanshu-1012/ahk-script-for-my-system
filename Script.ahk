@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 !t::Run ms-settings:taskbar
 
 
-^!t::Click, 44, 553
+^!t::Click, 1, 553
 
 
 RAlt & Left::
@@ -71,7 +71,9 @@ RAlt & i::Run https://www.linkedin.com/feed/
 !d::Run https://drive.google.com/drive/u/2/my-drive
 return
 
-
+Tab & y::
+Click, 440,94
+Return
 
 RAlt & l::
 Click, 869, 1025  
