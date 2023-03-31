@@ -1,0 +1,98 @@
+# espanso match file
+#yes
+
+# For a complete introduction, visit the official docs at: https://espanso.org/docs/
+
+# You can use this file to define the base matches (aka snippets)
+# that will be available in every application when using espanso.
+
+# Matches are substitution rules: when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  - trigger: ":fd"
+    replace: "free download"
+
+  - trigger: ":em1"
+    replace: "priyanshudeep001@gmail.com"
+
+  - trigger: ":jmi"
+    replace: "Jamia Millia Islamia"
+
+  - trigger: ":ki"
+    replace: "Priyanshu@9354"
+
+  - trigger: ":gh"
+    replace: ":white_check_mark: []()"
+
+  - trigger: ":em2"
+    replace: "priyanshu10pathak@gmail.com"
+
+  - trigger: ":em4"
+    replace: "xuxintt4@gmail.com"
+
+  - trigger: ":inv"
+    replace: "‎ "
+ 
+  - trigger: ":emxu1"
+    replace: "xuxintt1@gmail.com"
+
+  - trigger: ":add"
+    replace: "H763, 5th Avenue, Gaur City-1, Greater NOIDA(W), Gautam budh nagar, UP-201301"
+
+  - trigger: ":emjmi"
+    replace: "priyanshu2003240@st.jmi.ac.in"  
+
+  - trigger: ":nm"
+    replace: "Priyanshu Pathak"
+  
+  - trigger: ":fnm"
+    replace: "Priyanshu"
+
+  - trigger: ":lnm"
+    replace: "Pathak"
+
+  - trigger: ":wifi"
+    replace: "10.2.0.10:8090"
+
+  - trigger: ":wk"
+    replace: "10-00-2001" 
+
+  - trigger: ":key"
+    replace: "Poiuytrtyuiuyansdfghu@9354" 
+
+  - trigger: ":ph"
+    replace: "9354282313"
+
+  - trigger: ":v"
+    replace: "```verilog
+
+
+```"
+
+  # NOTE: espanso uses YAML to define matches, so pay attention to the indentation!
+
+  # But matches can also be dynamic:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+
+  # And much more! For more information, visit the docs: https://espanso.org/docs/
