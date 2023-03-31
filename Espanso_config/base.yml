@@ -61,9 +61,6 @@ matches:
   - trigger: ":wk"
     replace: "10-00-2001" 
 
-  - trigger: ":key"
-    replace: "Poiuytrtyuiuyansdfghu@9354" 
-
   - trigger: ":ph"
     replace: "9354282313"
 
