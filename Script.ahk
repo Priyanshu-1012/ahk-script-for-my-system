@@ -68,15 +68,19 @@ RAlt & i::Run https://www.linkedin.com/feed/
 !2::Run https://mail.google.com/mail/u/2/#inbox
 !4::Run https://mail.google.com/mail/u/1/#inbox
 !g::Run https://github.com/Priyanshu-1012
+!c::Run https://classroom.google.com/u/2/h
+!r::Run https://www.reddit.com/
 !d::Run https://drive.google.com/drive/u/2/my-drive
 return
 
-Tab & y::
-Click, 440,94
-Return
+#y::
+CoordMode, Mouse, Screen
+MouseClick, left, 440, 124
+return
+
 
 RAlt & l::
-Click, 869, 1025  
+Click, 939, 994  
 Return
 
 
