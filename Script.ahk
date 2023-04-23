@@ -48,10 +48,6 @@ return
 ^!c::Run "C:\ChatGPT - Shortcut.lnk"
 ^!m::Run "C:\Mail - Shortcut.lnk"
 ^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
-
-
-
-
 ^!b::Run "C:\Microsoft Edge - Shortcut.lnk"
 ^!s::Run "C:\Spotify - Shortcut.lnk"
 ^!l::Run "C:\Phone Link - Shortcut.lnk"
@@ -74,7 +70,7 @@ return
 return
 
 #IfWinActive ahk_exe msedge.exe
-!a::Run https://animesuge.to/anime/one-piece-ov8
+!a::Run https://animesuge.to/home
 RAlt & i::Run https://www.linkedin.com/feed/
 !1::Run https://mail.google.com/mail/u/0/#inbox
 !2::Run https://mail.google.com/mail/u/2/#inbox
