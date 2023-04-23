@@ -1,11 +1,19 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ^Esc::WinClose, A
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
 !t::Run ms-settings:taskbar
+
+^Down::
+WinMinimize, A
+return
+
 
 
 ^!t::Click, 1, 553
@@ -52,6 +60,10 @@ return
 ^!r::Run "C:\OBS Studio (64bit) - Shortcut.lnk"
 ^!d::
 Run explorer.exe shell:Downloads
+return
+
+^!o::
+Run explorer.exe shell:Documents
 return
 
 
@@ -127,3 +139,22 @@ return
 
 SetTitleMatchMode,2
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;open file in VSCode with Alt+V on selected file
+#IfWinActive ahk_exe explorer.exe
+!v::
+    clipboard =
+    SendInput, ^c
+    ClipWait, 1
+    If !ErrorLevel
+    {
+        path := Trim(Clipboard, "`r`n`0")
+        If InStr(path, ":") = 2
+        {
+            Run,cmd.exe /c code "%path%"
+        }
+    }
+Return
+#IfWinActive
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
