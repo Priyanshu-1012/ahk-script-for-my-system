@@ -72,6 +72,7 @@ return
 #IfWinActive ahk_exe msedge.exe
 !a::Run https://animesuge.to/home
 RAlt & i::Run https://www.linkedin.com/feed/
+RAlt & m::Run https://mentorship.lfx.linuxfoundation.org/#projects_all
 !1::Run https://mail.google.com/mail/u/0/#inbox
 !2::Run https://mail.google.com/mail/u/2/#inbox
 !4::Run https://mail.google.com/mail/u/1/#inbox
