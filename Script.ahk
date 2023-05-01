@@ -15,7 +15,6 @@ WinMinimize, A
 return
 
 
-
 ^!t::Click, 1, 553
 
 
@@ -154,4 +153,4 @@ SetTitleMatchMode,2
 Return
 #IfWinActive
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
