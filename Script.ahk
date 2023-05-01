@@ -170,47 +170,12 @@ Sleep, 500
 Send, {Space}
 Sleep,8000
 
+Loop, 20
+{
+    Send, {Tab}
+    Sleep, 10
+}
 
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
-Send, {Tab}
-Sleep, 10
 Send, {Space}
 
 Run "C:\WhatsApp - Shortcut.lnk"
