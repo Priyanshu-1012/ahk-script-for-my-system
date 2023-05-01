@@ -164,11 +164,11 @@ WinMaximize, A
 Sleep, 50
 
 Send, {Space}
-Sleep, 100                                                                               
+Sleep, 500                                                                               
 Send, {Down}
-Sleep, 100
+Sleep, 500
 Send, {Space}
-Sleep,7000
+Sleep,8000
 
 
 Send, {Tab}
