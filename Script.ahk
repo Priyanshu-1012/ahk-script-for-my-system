@@ -158,14 +158,61 @@ Return
 ^+m::
 Run, msedge.exe -new-window https://meet.google.com/?authuser=0
 WinWait, ahk_exe msedge.exe
-Sleep, 1000
-WinMaximize, A
 Sleep, 5000
-MouseClick, left, 435, 765
-Sleep, 500
-MouseClick, left, 556, 828
-Sleep, 8000
-MouseClick, left, 751, 749
+WinMaximize, A
+
+Sleep, 50
+
+Send, {Space}
+Sleep, 100                                                                               
+Send, {Down}
+Sleep, 100
+Send, {Space}
+Sleep,7000
+
+
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Tab}
+Sleep, 10
+Send, {Space}
+
 Run "C:\WhatsApp - Shortcut.lnk"
 
 Return
