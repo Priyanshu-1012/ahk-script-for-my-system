@@ -153,4 +153,19 @@ SetTitleMatchMode,2
 Return
 #IfWinActive
 
-;;
+;;;;;;::::::::::::::::::::::;;;;;;
+;Launch google meet in new window and copy the link to clipboard and then open wapp
+^+m::
+Run, msedge.exe -new-window https://meet.google.com/?authuser=0
+WinWait, ahk_exe msedge.exe
+Sleep, 1000
+WinMaximize, A
+Sleep, 5000
+MouseClick, left, 435, 765
+Sleep, 500
+MouseClick, left, 556, 828
+Sleep, 8000
+MouseClick, left, 751, 749
+Run "C:\WhatsApp - Shortcut.lnk"
+
+Return
