@@ -96,10 +96,16 @@ return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 #z::
 ; Get the handle of the active window
-activeWindowHandle := WinExist("A")
-
+awh := WinExist("A")
+WinGet, windowState, MinMax, ahk_id %awh%
+if (windowState = 1) ; Maximized
+{
+    ; Restore the window to its normal size and position
+    WinRestore, ahk_id %awh%
+    
+}
 ; Use the handle to move the active window to the top-left corner of the screen
-WinMove, ahk_id %activeWindowHandle%, , -5, 35,1928,1085
+WinMove, ahk_id %awh%, , -5, 35,1928,1085
 return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
