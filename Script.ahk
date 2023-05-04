@@ -3,49 +3,20 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-^Esc::WinClose, A
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^Esc::WinClose, A                  ;ctrl+esc to close active window
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ; Set desktop work area
-; ; Get the working area coordinates for the primary monitor
-; SysGet, monitorWorkArea, MonitorWorkArea
-
-; ; Set the height of the work area to be 35 pixels less than the screen height
-; workAreaHeight := monitorWorkArea.Bottom - monitorWorkArea.Top - 35
-
-; ; Define a function to set the work area for a window
-; SetWindowWorkArea(windowTitle)
-; {
-;   ; Get the window handle for the specified title
-;   WinGet, windowHandle, ID, %windowTitle%
-  
-;   ; If the window is maximized, set the work area to the adjusted height
-;   WinGet, windowState, MinMax, %windowTitle%
-;   if (windowState = 1) {
-;     DllCall("SystemParametersInfo", UInt, 0x2f, UInt, 0, UInt, 0, UInt, 0x1)
-;     DllCall("SystemParametersInfo", UInt, 0x30, UInt, 0, UInt, 0, UInt, 0x1)
-;     WinMove, ahk_id %windowHandle%, , monitorWorkArea.Left, monitorWorkArea.Top, monitorWorkArea.Right - monitorWorkArea.Left, workAreaHeight
-;     DllCall("SystemParametersInfo", UInt, 0x2f, UInt, 0, UInt, 0, UInt, 0x2)
-;     DllCall("SystemParametersInfo", UInt, 0x30, UInt, 0, UInt, 0, UInt, 0x2)
-;   }
-; }
-
-; ; Example usage:
-; SetTitleMatchMode, 2
-; SetWindowWorkArea("My Window Title")
-
+!t::Run ms-settings:taskbar           ;Alt+t for taskbar settings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-!t::Run ms-settings:taskbar
 
 ^Down::
-WinMinimize, A
+WinMinimize, A                   ;ctrl+down to minimize active window
 return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Set up a variable to keep track of the last minimized window
-lastMinimized := ""
 
-; Define a function to unminimize a given window
+lastMinimized := ""                   ;ctrl+up to UNminimize recently minimized window
+                                      ;and open them in order to recently to first minimized
 unminimize(hwnd) {
     WinGet, style, Style, ahk_id %hwnd%
     if (style & 0x20000000) {  ; If the window is minimized, unminimize it
@@ -59,12 +30,12 @@ unminimize(hwnd) {
     }
 }
 
-; Define the hotkey
+
 ^Up::
-    ; Get a list of all windows
+ 
     WinGet, windows, List
 
-    ; Create a blank list for minimized windows
+   
     minimizedWindows := []
 
     ; Loop through all windows and add minimized ones to the list
@@ -98,7 +69,7 @@ return
 ; Get the handle of the active window
 awh := WinExist("A")
 WinGet, windowState, MinMax, ahk_id %awh%
-if (windowState = 1) ; Maximized
+if (windowState = 1) ; Maximized                        ;making window fit to my taskbar
 {
     ; Restore the window to its normal size and position
     WinRestore, ahk_id %awh%
@@ -136,17 +107,7 @@ Send {RAlt Down}{Right}{RAlt Up}
 }
 return
 
-
-
-^!c::Run "C:\ChatGPT - Shortcut.lnk"
-^!m::Run "C:\Mail - Shortcut.lnk"
-^!e::Run "C:\Users\priya\Documents\START_ESPANSO.bat - Shortcut.lnk"
-^!b::Run "C:\Microsoft Edge - Shortcut.lnk"
-^!s::Run "C:\Spotify - Shortcut.lnk"
-^!l::Run "C:\Phone Link - Shortcut.lnk"
-^!w::Run "C:\WhatsApp - Shortcut.lnk"
-^!p::Run "C:\Prime Video for Windows - Shortcut.lnk"
-^!r::Run "C:\OBS Studio (64bit) - Shortcut.lnk"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ^!d::
 Run explorer.exe shell:Downloads
 return
@@ -155,17 +116,15 @@ return
 Run explorer.exe shell:Documents
 return
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 #IfWinActive ahk_exe msedge.exe
-^y::Run https://www.youtube.com
+^y::Run https://www.youtube.com    ;youtube in new tab
 return
 
 #IfWinActive ahk_exe msedge.exe
-!a::Run https://animesuge.to/home
 RAlt & i::Run https://www.linkedin.com/feed/
-RAlt & m::Run https://mentorship.lfx.linuxfoundation.org/#projects_all
 !1::Run https://mail.google.com/mail/u/0/#inbox
 !2::Run https://mail.google.com/mail/u/2/#inbox
 !4::Run https://mail.google.com/mail/u/1/#inbox
@@ -175,30 +134,21 @@ RAlt & m::Run https://mentorship.lfx.linuxfoundation.org/#projects_all
 !d::Run https://drive.google.com/drive/u/1/my-drive
 return
 
-; #y::
-; CoordMode, Mouse, Screen
-; MouseClick, left, 440, 124
-; return
 
 #y::
 Send, ^l
-Send, https://www.youtube.com
+Send, https://www.youtube.com   ;youtube in same tab
 Send, {Enter} 
 Return
 
 
 RAlt & l::
-Click, 939, 994  
+Click, 939, 994  ;;;;like a vid
 Return
 
 
 
-
-!+e::
-Run, explorer.exe "C:\Users\priya\Documents\Electronics"
-return
-
-!+s::Shutdown, 1
+!+s::Shutdown, 1     ;Alt+shift+S/R for shutdown/restart
 !+r::Shutdown, 2
 
 
@@ -213,24 +163,12 @@ SetTitleMatchMode, 2
 #IfWinActive ahk_exe msedge.exe
 RAlt & Up::
     Send ^{PgUp}
-return
+return                                        ;alt+up/down to switch tabs in edge
 
 RAlt & Down::
     Send ^{PgDn}
 return
 
-
-
-SetTitleMatchMode, 2
-
-#IfWinActive ahk_exe msedge.exe
-!Up::
-    Send ^{PgUp}
-return
-
-!Down::
-    Send ^{PgDn}
-return
 
 
 SetTitleMatchMode,2
@@ -253,7 +191,7 @@ SetTitleMatchMode,2
 Return
 #IfWinActive
 
-;;;;;;::::::::::::::::::::::;;;;;;
+;;;;;;::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Launch google meet in new window and copy the link to clipboard and then open wapp
 ^+m::
 Run, msedge.exe -new-window https://meet.google.com/?authuser=0
@@ -282,6 +220,7 @@ Run "C:\WhatsApp - Shortcut.lnk"
 
 Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ^`::
  
 Click, 1650,913
@@ -291,17 +230,19 @@ Sleep,100
 Loop,5
 {
 Send,{Down}
-Sleep,500
+Sleep,100
 }
 
 Send,{Space}
-Sleep,500
+Sleep,100
 
 Loop,6
 {
 Send,{Up}
-Sleep,500
+Sleep,100
 }
 
 Send,{Space}
+sleep,10
+click,826,1014
 return
