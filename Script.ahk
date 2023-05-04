@@ -281,3 +281,27 @@ Send, {Space}
 Run "C:\WhatsApp - Shortcut.lnk"
 
 Return
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+^`::
+ 
+Click, 1650,913
+
+Sleep,100
+
+Loop,5
+{
+Send,{Down}
+Sleep,500
+}
+
+Send,{Space}
+Sleep,500
+
+Loop,6
+{
+Send,{Up}
+Sleep,500
+}
+
+Send,{Space}
+return
