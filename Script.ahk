@@ -186,6 +186,19 @@ SetTitleMatchMode,2
         If InStr(path, ":") = 2
         {
             Run,cmd.exe /c code "%path%"
+            Sleep, 2000
+            WinClose , cmd.exe
+            Sleep, 2000
+            awh := WinExist("A")
+WinGet, windowState, MinMax, ahk_id %awh%
+if (windowState = 1) ; Maximized                        ;making window fit to my taskbar
+{
+    ; Restore the window to its normal size and position
+    WinRestore, ahk_id %awh%
+    
+}
+; Use the handle to move the active window to the top-left corner of the screen
+WinMove, ahk_id %awh%, , -5, 35,1928,1085
         }
     }
 Return
@@ -223,9 +236,9 @@ Return
 
 ^`::
  
-Click, 1650,913
+Click, 1582,921
 
-Sleep,100
+Sleep,500
 
 Loop,5
 {
@@ -233,8 +246,9 @@ Send,{Down}
 Sleep,100
 }
 
+Sleep,500
 Send,{Space}
-Sleep,100
+Sleep,300
 
 Loop,6
 {
@@ -245,4 +259,18 @@ Sleep,100
 Send,{Space}
 sleep,10
 click,826,1014
+return
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#IfWinActive ahk_exe explorer.exe
++u::
+send, {Alt}
+sleep,10
+loop,8
+{
+send, {Right}
+sleep 10
+}
+send,{Enter}
+sleep,1500
+send,{Enter}
 return
