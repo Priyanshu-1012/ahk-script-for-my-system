@@ -5,14 +5,34 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ^Esc::WinClose, A                  ;ctrl+esc to close active window
+#HotkeyModifierTimeout, 100
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+!t::Run ms-settings:taskbar   
+#HotkeyModifierTimeout, 100        ;Alt+t for taskbar settings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    ;Alt+shift+S/R for shutdown/restart
+    
+!+r:: 
+    MsgBox, 4145, Restart Computer, Restarting computer in 5 seconds. Press Cancel to abort., 5
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-!t::Run ms-settings:taskbar           ;Alt+t for taskbar settings
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    IfMsgBox Cancel
+        Return
+
+     RunWait, shutdown.exe -r -t 0
+Return
+
+
+!+s::
+Shutdown, 1
+Return
+ 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ^Down::
 WinMinimize, A                   ;ctrl+down to minimize active window
 return
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 lastMinimized := ""                   ;ctrl+up to UNminimize recently minimized window
@@ -76,7 +96,7 @@ if (windowState = 1) ; Maximized                        ;making window fit to my
     
 }
 ; Use the handle to move the active window to the top-left corner of the screen
-WinMove, ahk_id %awh%, , -5, 35,1928,1085
+WinMove, ahk_id %awh%, , -5, 35,1928,1050
 return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -120,7 +140,8 @@ return
 
 
 #IfWinActive ahk_exe msedge.exe
-^y::Run https://www.youtube.com    ;youtube in new tab
+^y::Run https://www.youtube.com  
+#HotkeyModifierTimeout, 100          ;youtube in new tab
 return
 
 #IfWinActive ahk_exe msedge.exe
@@ -135,9 +156,13 @@ RAlt & i::Run https://www.linkedin.com/feed/
 return
 
 
+
+
 #y::
 Send, ^l
+Sleep,10
 Send, https://www.youtube.com   ;youtube in same tab
+Sleep,10
 Send, {Enter} 
 Return
 
@@ -146,10 +171,7 @@ RAlt & l::
 Click, 939, 994  ;;;;like a vid
 Return
 
-
-
-!+s::Shutdown, 1     ;Alt+shift+S/R for shutdown/restart
-!+r::Shutdown, 2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 RAlt::LAlt
@@ -233,10 +255,10 @@ Run "C:\WhatsApp - Shortcut.lnk"
 
 Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+#IfWinActive ahk_exe msedge.exe
 ^`::
- 
-Click, 1582,921
+
+Click, 1649,880
 
 Sleep,500
 
@@ -262,9 +284,10 @@ click,826,1014
 return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 #IfWinActive ahk_exe explorer.exe
-+u::
+!u::
+sleep,500
 send, {Alt}
-sleep,10
+sleep,100
 loop,8
 {
 send, {Right}
@@ -285,3 +308,9 @@ Loop,6
 
 Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#IfWinActive ahk_exe msedge.exe            ;a quick google search for selected text
+^g::
+ Send, ^c
+Sleep, 50
+ Run, https://www.google.com/search?q=%clipboard%
+Return

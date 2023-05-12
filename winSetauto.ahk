@@ -20,5 +20,5 @@ Loop
 
         WinMove, ahk_id %awh%, , , 35,,
     }
-    Sleep, 1000 ; 
+    Sleep, 10000 ; 
 }
