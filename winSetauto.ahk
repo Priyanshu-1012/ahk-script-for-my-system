@@ -8,17 +8,27 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Loop
 {
     WinGetPos, X, Y,,, A
-    if Y < 35
+    
+    ; Check if the active window is Rainmeter and exclude it
+    IfWinExist, ahk_exe Rainmeter.exe
+    {
+        IfWinActive, ahk_exe Rainmeter.exe
+            continue  ; Skip the rest of the loop if Rainmeter is active
+    }
+
+    ; Check if the active window is below 33 pixels in the y-direction
+    If Y < 33
     {
         awh := WinExist("A")
         WinGet, windowState, MinMax, ahk_id %awh%
-        if (windowState = 1) ; Maximized
-        {
-            
+        
+        ; Restore the window if it is maximized
+        If (windowState = 1)
             WinRestore, ahk_id %awh%
-        }
-
-        WinMove, ahk_id %awh%, , , 35,,
+        
+        ; Move the window to 33 pixels from the top
+        WinMove, ahk_id %awh%, , , 33,,
     }
-    Sleep, 10000 ; 
+
+    Sleep, 10000 ; Delay between each loop iteration
 }

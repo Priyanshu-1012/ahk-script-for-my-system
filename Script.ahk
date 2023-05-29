@@ -9,6 +9,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 !t::Run ms-settings:taskbar   
 #HotkeyModifierTimeout, 100        ;Alt+t for taskbar settings
+
+
+#p:: Run, notepad.exe
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;Alt+shift+S/R for shutdown/restart
     
@@ -96,7 +99,7 @@ if (windowState = 1) ; Maximized                        ;making window fit to my
     
 }
 ; Use the handle to move the active window to the top-left corner of the screen
-WinMove, ahk_id %awh%, , -5, 35,1928,1050
+WinMove, ahk_id %awh%, , -5, 33,1928,1050
 return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -335,7 +338,10 @@ if window_minmax <> 0
 {
   return
 }
-
+IfWinActive, ahk_exe code.exe
+{
+  return
+}
 CoordMode, Mouse, Screen
 SetWinDelay, 0
 
@@ -352,3 +358,47 @@ loop
 }
 
 return
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;create a new text file
+#IfWinActive ahk_exe explorer.exe
+^+t::
+Click, Right, 1
+Sleep, 10
+SendRaw, wt
+Return
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; LAlt & LButton::
+
+; CoordMode, Mouse, Relative
+; MouseGetPos, cur_win_x, cur_win_y, window_id
+; WinGet, window_minmax, MinMax, ahk_id %window_id%
+
+; ; Return if the window is maximized or minimized
+; if window_minmax <> 0
+; {
+;   return
+; }
+
+; CoordMode, Mouse, Screen
+; SetWinDelay, 0
+
+; loop
+; {
+;   if !GetKeyState("LButton", "P")
+;   {
+;     break
+;   }
+
+;   ; move the window based on cursor position
+;   MouseGetPos, cur_x, cur_y
+;   WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
+; }
+
+; return
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+#IfWinActive ahk_exe ApplicationFrameHost.exe          
+RAlt & Left::
+ Send, {BackSpace}
+Return
+
