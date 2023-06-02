@@ -327,7 +327,9 @@ Return
 f1:: run notepad.exe
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 RAlt::LAlt
-RAlt & LButton::
+
+#IfWinActive ahk_exe WindowsTerminal.exe
+Alt & LButton::
 
 CoordMode, Mouse, Relative
 MouseGetPos, cur_win_x, cur_win_y, window_id
@@ -368,34 +370,6 @@ SendRaw, wt
 Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-; LAlt & LButton::
-
-; CoordMode, Mouse, Relative
-; MouseGetPos, cur_win_x, cur_win_y, window_id
-; WinGet, window_minmax, MinMax, ahk_id %window_id%
-
-; ; Return if the window is maximized or minimized
-; if window_minmax <> 0
-; {
-;   return
-; }
-
-; CoordMode, Mouse, Screen
-; SetWinDelay, 0
-
-; loop
-; {
-;   if !GetKeyState("LButton", "P")
-;   {
-;     break
-;   }
-
-;   ; move the window based on cursor position
-;   MouseGetPos, cur_x, cur_y
-;   WinMove, ahk_id %window_id%,, (cur_x - cur_win_x), (cur_y - cur_win_y)
-; }
-
-; return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 #IfWinActive ahk_exe ApplicationFrameHost.exe          
 RAlt & Left::

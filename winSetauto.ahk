@@ -1,21 +1,16 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-
-;;this one is just to adjust all windows to not overlap with my rainmeter taskbar
-
-Loop
+﻿Loop
 {
     WinGetPos, X, Y,,, A
     
-    ; Check if the active window is Rainmeter and exclude it
-    IfWinExist, ahk_exe Rainmeter.exe
+    ; Get the process name of the active window
+    WinGet, activeProcess, ProcessName, A
+    
+    ; Check if the active window is Rainmeter or PowerToys.PowerOCR and exclude them
+    If (activeProcess = "Rainmeter.exe") || (activeProcess = "PowerToys.PowerOCR.exe")
     {
-        IfWinActive, ahk_exe Rainmeter.exe
-            continue  ; Skip the rest of the loop if Rainmeter is active
+        continue  ; Skip the rest of the loop if Rainmeter or PowerToys.PowerOCR is active
     }
-
+    
     ; Check if the active window is below 33 pixels in the y-direction
     If Y < 33
     {
