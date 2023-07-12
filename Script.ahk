@@ -149,13 +149,13 @@ return
 
 #IfWinActive ahk_exe msedge.exe
 RAlt & i::Run https://www.linkedin.com/feed/
-!1::Run https://mail.google.com/mail/u/0/#inbox
-!2::Run https://mail.google.com/mail/u/2/#inbox
+!1::Run https://mail.google.com/mail/u/2/#inbox
+!2::Run https://mail.google.com/mail/u/0/#inbox
 !4::Run https://mail.google.com/mail/u/1/#inbox
-!g::Run https://github.com/Priyanshu-1012
-!c::Run https://classroom.google.com/u/1/h
+!g::Run https://github.com/Priyanshu-1012?tab=repositories
+!c::Run https://classroom.google.com/u/4/h
 !r::Run https://www.reddit.com/
-!d::Run https://drive.google.com/drive/u/1/my-drive
+!d::Run https://drive.google.com/drive/u/0/my-drive
 return
 
 
@@ -175,13 +175,6 @@ Click, 939, 994  ;;;;like a vid
 Return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-RAlt::LAlt
-
-
-
-
 
 SetTitleMatchMode, 2
 
@@ -230,9 +223,9 @@ Return
 #IfWinActive
 
 ;;;;;;::::::::::::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-#IfWinActive ahk_exe explorer.exe
-`::
-Run, explorer.exe "C:\"
+
+#`::
+Run explorer.exe ::{20D04FE0-3AEA-1069-A2D8-08002B30309D}   ;this PC
 return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;Launch google meet in new window and copy the link to clipboard and then open wapp
@@ -369,10 +362,29 @@ Sleep, 10
 SendRaw, wt
 Return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;git bash here
+#IfWinActive ahk_exe explorer.exe
+^+g::
+Click, Right, 1
+Sleep, 10
+Send, s
+Sleep,10
+Send, {enter}
+Return
 
+;powershell here
+#IfWinActive ahk_exe explorer.exe
+^+p::
+send, ^l
+Sleep, 50
+SendRaw, pwsh
+sleep,50
+Send, {Enter}
+return
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 #IfWinActive ahk_exe ApplicationFrameHost.exe          
 RAlt & Left::
  Send, {BackSpace}
 Return
+
 

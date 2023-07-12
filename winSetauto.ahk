@@ -25,5 +25,5 @@
         WinMove, ahk_id %awh%, , , 33,,
     }
 
-    Sleep, 10000 ; Delay between each loop iteration
+    Sleep, 1000 ; Delay between each loop iteration
 }
